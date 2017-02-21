@@ -9,7 +9,7 @@ var Registry = require('dat-registry')
 
 var registry = Registry()
 
-registry.login({email: 'karissa', :password: 'my passw0rd r0cks!'}, function () {
+registry.login({email: 'karissa', password: 'my passw0rd r0cks!'}, function () {
   registry.dats.create({
     name: 'animal-names',
     url: 'dat://378d23adf22df',
