@@ -62,6 +62,5 @@ Returns all dats that match the given (optional) querystrings.
 #### `registry.dats.update(data, cb)`
 #### `registry.dats.delete(data, cb)`
 #### `registry.users.get([data], cb)`
-#### `registry.users.create(data, cb)`
 #### `registry.users.update(data, cb)`
 #### `registry.users.delete(data, cb)`
