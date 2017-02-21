@@ -26,7 +26,7 @@ registry.login({email: 'karissa', password: 'my passw0rd r0cks!'}, function () {
 
 ### API
 
-#### ```var registry = Registry([opts])`
+#### `var registry = Registry([opts])`
 
   * `opts.server`: the server to query. Default is `https://datproject.org`
 
