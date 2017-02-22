@@ -1,6 +1,12 @@
 # dat-registry-client
 
-API Registry Client for publishing dats
+API Registry Client for publishing dats.
+
+## Installation
+
+```
+npm install dat-registry
+```
 
 ### Quick Example
 
@@ -28,7 +34,23 @@ registry.login({email: 'karissa', password: 'my passw0rd r0cks!'}, function () {
 
 #### `var registry = Registry([opts])`
 
-  * `opts.server`: the server to query. Default is `https://datproject.org`
+  * `opts.server`: the server to query. Default is `https://datproject.org/api/v1`
+
+Other options are passed to [township-client](https://github.com/township/township-client), these include:
+
+```js
+opts = {
+  config: {
+    filename: '.townshiprc', // configuration filename (stored in os homedir)
+    filepath: '~/.townshiprc' // specify a full config file path 
+  },
+  routes: { // routes for ALL township servers used by client
+    register: '/register',
+    login: '/login',
+    updatePassword: '/updatepassword'
+  }
+}
+```
 
 #### `registry.login(data, cb)`
 

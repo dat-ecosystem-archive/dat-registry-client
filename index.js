@@ -10,9 +10,9 @@ function API (opts) {
   if (!opts) opts = {}
   var server = opts.server || 'https://datproject.org'
   var api = server + '/api/v1'
-  var township = Township({
-    server: api
-  })
+  var township = Township(xtend(opts, {
+    server: api // used over opts.server
+  }))
   return {
     login: township.login.bind(township),
     logout: township.logout.bind(township),
