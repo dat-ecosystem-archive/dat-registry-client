@@ -31,30 +31,34 @@ function API (opts) {
   }
 
   function rest (path) {
-    var opts = {
+    var defaults = {
       uri: api + path,
       json: true
     }
     return {
       get: function (input, cb) {
         var params = qs.stringify(input)
-        opts.uri += '?' + params
+        var opts = Object.assign({}, defaults)
+        opts.uri = defaults.uri + '?' + params
         opts.method = 'GET'
         township.secureRequest(opts, cb)
       },
       create: function (input, cb) {
+        var opts = Object.assign({}, defaults)
         opts.body = input
         opts.method = 'POST'
         township.secureRequest(opts, cb)
       },
       update: function (input, cb) {
         if (!input.id) throw new Error('id required')
+        var opts = Object.assign({}, defaults)
         opts.body = input
         opts.method = 'PUT'
         township.secureRequest(opts, cb)
       },
       delete: function (input, cb) {
         if (!input.id) throw new Error('id required')
+        var opts = Object.assign({}, defaults)
         opts.body = input
         opts.method = 'DELETE'
         township.secureRequest(opts, cb)
