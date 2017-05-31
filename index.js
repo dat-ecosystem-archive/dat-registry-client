@@ -13,7 +13,7 @@ function API (opts) {
   var SERVER = 'https://datproject.org'
   var API_PATH = '/api/v1'
 
-  var apiPath = opts.server.indexOf('datproject.org') === -1 ? opts.apiPath : API_PATH // only add default path to datproject.org server
+  var apiPath = (opts.server && opts.server.indexOf('datproject.org') > -1) ? API_PATH: opts.apiPath // only add default path to datproject.org server
   var townshipOpts = Object.assign({}, opts)
 
   // set default township server & routes for datproject.org
