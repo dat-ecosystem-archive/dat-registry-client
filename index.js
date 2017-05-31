@@ -13,7 +13,7 @@ function API (opts) {
   var SERVER = 'https://datproject.org'
   var API_PATH = '/api/v1'
 
-  var apiPath = (opts.server && opts.server.indexOf('datproject.org') > -1) ? API_PATH: opts.apiPath // only add default path to datproject.org server
+  var apiPath = !opts.server || (opts.server.indexOf('datproject.org') > -1) ? API_PATH: opts.apiPath // only add default path to datproject.org server
   var townshipOpts = Object.assign({}, opts)
 
   // set default township server & routes for datproject.org
@@ -28,8 +28,8 @@ function API (opts) {
     }
   }
 
-  var api = townshipOpts.server + apiPath
   var township = Township(townshipOpts)
+  var api = township.server + apiPath // let township parse server
 
   return {
     login: township.login.bind(township),
@@ -68,14 +68,12 @@ function API (opts) {
         township.secureRequest(opts, cb)
       },
       update: function (input, cb) {
-        if (!input.id) throw new Error('id required')
         var opts = Object.assign({}, defaults)
         opts.body = input
         opts.method = 'PUT'
         township.secureRequest(opts, cb)
       },
       delete: function (input, cb) {
-        if (!input.id) throw new Error('id required')
         var opts = Object.assign({}, defaults)
         opts.body = input
         opts.method = 'DELETE'
