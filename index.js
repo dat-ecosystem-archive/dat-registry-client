@@ -19,7 +19,7 @@ function API (opts) {
   // set default township server & routes for datproject.org
   if (!townshipOpts.config.filename) townshipOpts.config.filename = '.datrc'
   if (!townshipOpts.server) townshipOpts.server = SERVER
-  if (!opts.routes && !opts.server) {
+  if (!opts.routes && apiPath) {
     townshipOpts.routes = {
       register: apiPath + '/register',
       login: apiPath + '/login',
