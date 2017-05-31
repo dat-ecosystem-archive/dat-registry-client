@@ -13,7 +13,7 @@ function API (opts) {
   var SERVER = 'https://datproject.org'
   var API_PATH = '/api/v1'
 
-  var apiPath = !opts.server || (opts.server.indexOf('datproject.org') > -1) ? API_PATH: opts.apiPath // only add default path to datproject.org server
+  var apiPath = !opts.server || (opts.server.indexOf('datproject.org') > -1) ? API_PATH : opts.apiPath // only add default path to datproject.org server
   var townshipOpts = Object.assign({}, opts)
 
   // set default township server & routes for datproject.org
@@ -39,10 +39,10 @@ function API (opts) {
     secureRequest: township.secureRequest.bind(township),
     dats: rest('/dats'),
     users: xtend(rest('/users'), {
-      resetPassword: function(input, cb) {
+      resetPassword: function (input, cb) {
         nets({method: 'POST', uri: api + '/password-reset', body: input, json: true}, cb)
       },
-      resetPasswordConfirmation: function(input, cb) {
+      resetPasswordConfirmation: function (input, cb) {
         nets({method: 'POST', uri: api + '/password-reset-confirm', body: input, json: true}, cb)
       }
     })
