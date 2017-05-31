@@ -8,11 +8,28 @@ module.exports = API
 function API (opts) {
   if (!(this instanceof API)) return new API(opts)
   if (!opts) opts = {}
-  var server = opts.server || 'https://datproject.org'
-  var api = server + '/api/v1'
-  var township = Township(xtend(opts, {
-    server: api // used over opts.server
-  }))
+
+  // datproject.org defaults, specify opts.server and opts.apiPath to override
+  var SERVER = 'https://datproject.org'
+  var API_PATH = '/api/v1'
+
+  var apiPath = (opts.server && opts.server.indexOf('datproject.org') > -1) ? API_PATH: opts.apiPath // only add default path to datproject.org server
+  var townshipOpts = Object.assign({}, opts)
+
+  // set default township server & routes for datproject.org
+  if (!townshipOpts.config.filename) townshipOpts.config.filename = '.datrc'
+  if (!townshipOpts.server) townshipOpts.server = SERVER
+  if (!opts.routes && apiPath) {
+    townshipOpts.routes = {
+      register: apiPath + '/register',
+      login: apiPath + '/login',
+      updatePassword: apiPath + '/updatepassword'
+    }
+  }
+
+  var api = townshipOpts.server + apiPath
+  var township = Township(townshipOpts)
+
   return {
     login: township.login.bind(township),
     logout: township.logout.bind(township),

@@ -1,6 +1,13 @@
-# dat-registry-client
+# dat-registry
 
-API Registry Client for publishing dats.
+API Registry Client for publishing dats. By default, the client is capable of registering, login, and publishing to datproject.org.
+
+`dat-registry` allows users to interact with and publish dats to your registry via the `dat` command line. Supporting this module on your registry will allow a user to login and publish:
+
+```
+dat login custom-dat-registry.com
+dat publish
+```
 
 ## Installation
 
@@ -34,14 +41,15 @@ registry.login({email: 'karissa', password: 'my passw0rd r0cks!'}, function () {
 
 #### `var registry = Registry([opts])`
 
-  * `opts.server`: the server to query. Default is `https://datproject.org/api/v1`
+  * `opts.server`: the registry server. Default is `https://datproject.org`
+  * `opts.apiPath`: registery server API path, e.g. we use `/api/v1` for datproject.org. This will overwrite default township routes to use server + apiPath.
+  * `opts.config.filename`: defaults to `~.datrc` instead of township defaults.
 
 Other options are passed to [township-client](https://github.com/township/township-client), these include:
 
 ```js
 opts = {
   config: {
-    filename: '.townshiprc', // configuration filename (stored in os homedir)
     filepath: '~/.townshiprc' // specify a full config file path 
   },
   routes: { // routes for ALL township servers used by client
@@ -67,7 +75,6 @@ Will callback with logout success or failure.
 #### `var user = registry.whoami([opts])`
 
 Returns user object with currently logged in user. See `township-client` for options.
-
 
 ### CRUD API
 
