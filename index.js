@@ -17,6 +17,7 @@ function API (opts) {
   var townshipOpts = Object.assign({}, opts)
 
   // set default township server & routes for datproject.org
+  if (!townshipOpts.config) townshipOpts.config = {}
   if (!townshipOpts.config.filename) townshipOpts.config.filename = '.datrc'
   if (!townshipOpts.server) townshipOpts.server = SERVER
   if (!opts.routes && apiPath) {
