@@ -8,6 +8,7 @@ module.exports = API
 function API (opts) {
   if (!(this instanceof API)) return new API(opts)
   if (!opts) opts = {}
+  if (!opts.apiPath) opts.apiPath = ''
 
   // datproject.org defaults, specify opts.server and opts.apiPath to override
   var SERVER = 'https://datproject.org'
