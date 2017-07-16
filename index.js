@@ -45,6 +45,9 @@ function API (opts) {
       },
       resetPasswordConfirmation: function (input, cb) {
         nets({method: 'POST', uri: api + '/password-reset-confirm', body: input, json: true}, cb)
+      },
+      suspend: function (input, cb) {
+        nets({method: 'PUT', uri: api + '/users/suspend', body: input, json: true}, cb)
       }
     })
   }
