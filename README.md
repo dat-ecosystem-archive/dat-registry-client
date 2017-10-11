@@ -1,6 +1,8 @@
 # dat-registry
 
-API Registry Client for publishing dats. By default, the client is capable of registering, login, and publishing to datproject.org.
+[![Build Status](https://travis-ci.org/datproject/dat-registry-client.svg?branch=master)](https://travis-ci.org/datproject/dat-registry-client)
+
+API Registry Client for publishing dats. By default, the client is capable of registering, login, and publishing to datbase.org.
 
 `dat-registry` allows users to interact with and publish dats to your registry via the `dat` command line. Supporting this module on your registry will allow a user to login and publish:
 
@@ -32,7 +34,7 @@ registry.login({email: 'karissa', password: 'my passw0rd r0cks!'}, function () {
     if (err) throw err
     if (resp.statusCode === 400) console.error(data.message)
     console.log('Published successfully!')
-    // Created a nickname for a dat at `https://datproject.org/karissa/animal-names`
+    // Created a nickname for a dat at `https://datbase.org/karissa/animal-names`
   })
 })
 ```
@@ -41,8 +43,8 @@ registry.login({email: 'karissa', password: 'my passw0rd r0cks!'}, function () {
 
 #### `var registry = Registry([opts])`
 
-  * `opts.server`: the registry server. Default is `https://datproject.org`
-  * `opts.apiPath`: registery server API path, e.g. we use `/api/v1` for datproject.org. This will overwrite default township routes to use server + apiPath.
+  * `opts.server`: the registry server. Default is `https://datbase.org`
+  * `opts.apiPath`: registery server API path, e.g. we use `/api/v1` for datbase.org. This will overwrite default township routes to use server + apiPath.
   * `opts.config.filename`: defaults to `~.datrc` instead of township defaults.
 
 Other options are passed to [township-client](https://github.com/township/township-client), these include:

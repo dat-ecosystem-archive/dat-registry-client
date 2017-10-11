@@ -10,14 +10,14 @@ function API (opts) {
   if (!opts) opts = {}
   if (!opts.apiPath) opts.apiPath = ''
 
-  // datproject.org defaults, specify opts.server and opts.apiPath to override
-  var SERVER = 'https://datproject.org'
+  // datbase.org defaults, specify opts.server and opts.apiPath to override
+  var SERVER = 'https://datbase.org'
   var API_PATH = '/api/v1'
 
-  var apiPath = !opts.server || (opts.server.indexOf('datproject.org') > -1) ? API_PATH : opts.apiPath // only add default path to datproject.org server
+  var apiPath = !opts.server || (opts.server.indexOf('datbase.org') > -1) ? API_PATH : opts.apiPath // only add default path to datbase.org server
   var townshipOpts = Object.assign({}, opts)
 
-  // set default township server & routes for datproject.org
+  // set default township server & routes for datbase.org
   if (!townshipOpts.config) townshipOpts.config = {}
   if (!townshipOpts.config.filename) townshipOpts.config.filename = '.datrc'
   if (!townshipOpts.server) townshipOpts.server = SERVER

@@ -4,7 +4,8 @@
   "description": "dat registry api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deps": "dependency-check . && dependency-check . --extra --no-dev",
+    "test": "standard && npm run deps && echo \"Error: no tests\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -13,7 +14,7 @@
   "keywords": [
     "dat",
     "registry",
-    "datproject.org",
+    "datbase.org",
     "users",
     "publish",
     "registry"
@@ -28,5 +29,9 @@
     "nets": "^3.2.0",
     "township-client": "^1.3.1",
     "xtend": "^4.0.1"
+  },
+  "devDependencies": {
+    "dependency-check": "^2.9.1",
+    "standard": "^10.0.3"
   }
 }
