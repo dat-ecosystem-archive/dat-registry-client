@@ -1,7 +1,7 @@
 var Township = require('township-client')
 var qs = require('querystring')
 var nets = require('nets')
-var xtend = require('xtend')
+var xtend = Object.assign
 
 module.exports = API
 
@@ -41,13 +41,13 @@ function API (opts) {
     dats: rest('/dats'),
     users: xtend(rest('/users'), {
       resetPassword: function (input, cb) {
-        nets({method: 'POST', uri: api + '/password-reset', body: input, json: true}, cb)
+        nets({ method: 'POST', uri: api + '/password-reset', body: input, json: true }, cb)
       },
       resetPasswordConfirmation: function (input, cb) {
-        nets({method: 'POST', uri: api + '/password-reset-confirm', body: input, json: true}, cb)
+        nets({ method: 'POST', uri: api + '/password-reset-confirm', body: input, json: true }, cb)
       },
       suspend: function (input, cb) {
-        nets({method: 'PUT', uri: api + '/users/suspend', body: input, json: true}, cb)
+        nets({ method: 'PUT', uri: api + '/users/suspend', body: input, json: true }, cb)
       }
     })
   }
