@@ -1,6 +1,6 @@
 {
   "name": "dat-registry",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "dat registry api",
   "main": "index.js",
   "scripts": {
